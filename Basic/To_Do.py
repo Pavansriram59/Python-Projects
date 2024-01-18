@@ -14,30 +14,61 @@
 
 # 5. Quit:
 #    - Enter '5' to exit the application.
+from datetime import date
 
 def todo_list():
 
-    while True:
+    # Maintaining a dictionary to store tasks
+    tasks=[]
+    task_number=0
+    print("====== To-Do List ======")
 
-        # Maintaining a dictionary to store tasks
-        d={1:"Hello Everyone"}
+    while True:
         
-        print("Options:")
+        print("\nOptions:")
         print("1.Display To-Do List")
         print("2.Add a Task")
         print("3.Mark a Task as completed")
         print("4.Remove a Task")
         print("5.Quit")
-        num=int(input("Enter a number to perform an operation:"))
+        choice=int(input("\nEnter a number to perform an operation:"))
 
 
-        if(num==1):
-            print("\nYour Current Tasks are : ")
+        if(choice==1):
+            print("\nYour Current Tasks are:")
 
-            for k,v in d.items():
-                print(k,".",v)
+            for task in tasks:
+                print(f"Task {task['No.']}:{task['Name']}\nDate Added:{task['Date Added']}\nCompleted:{task['Completed']}\n")
 
-        if(num==2):
-            s=input("Enter the task to add:")
+        if(choice==2):
+            task_number+=1
+            new_task={
+                "No.":task_number,
+                "Name":input("Enter the task name to add:"),
+                "Date Added":date.today(),
+                "Completed":False
+            }
+            tasks.append(new_task)
+
+        if(choice==3):
+            for task in tasks:
+                print(f"Task {task['No.']}:{task['Name']}\nDate Added:{task['Date Added']}\nCompleted:{task['Completed']}\n")
+            
+            num=int(input("Enter the task number to mark as completed:"))
+            if num in [t["No."] for t in tasks]:
+                tasks[num-1]["Completed"] = True
+        
+        if(choice==4):
+            for task in tasks:
+                print(f"Task {task['No.']}:{task['Name']}\nDate Added:{task['Date Added']}\nCompleted:{task['Completed']}\n")
+            
+            num=int(input("Enter the task number to remove:"))
+            if num in [t["No."] for t in tasks]:
+                tasks.remove(tasks[num-1])
+
+        if(choice==5):
+            break
+
+todo_list()
 
 
