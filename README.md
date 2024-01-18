@@ -9,5 +9,5 @@ Task 3 - Python Password Generator
 Task 1 - AI Chatbot Development
 Task 2 - Voice Assiatant
 
-# Advanced Project 
+# Advanced Project
 Real-time Auto License Plate Recognition with Jetson Nano
